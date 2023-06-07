@@ -45,44 +45,77 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 4-bit Count Down Counter
-### Procedure
-/* write all the steps invloved */
+### Procedure:
+~~~
+=> Connect the supply (+5V) to the circuit.
+=> Switch ON the main switch.
+=> If the output is 1, then the bulb glows.
+~~~
 
+### PROGRAM:
+~~~
+For Upcounter:
+module upcounter(clk,A);
+input clk;
+output reg [0:3]A;
+always@ (posedge clk)
+begin
+	A[0]=((A[1])&(A[2])&(A[3]))^A[0];
+	A[1]=((A[2])&(A[3]))^A[1];
+	A[2]=((A[3]))^A[2];
+	A[3]=1^A[3];
+end
+endmodule
 
+For Downcounter:
+module downcounter(clk,A);
+input clk;
+output reg [0:3]A;
+always@ (posedge clk)
+begin
+	A[0]=((~A[1])&(~A[2])&(~A[3]))^A[0];
+	A[1]=((~A[2])&(~A[3]))^A[1];
+	A[2]=((~A[3]))^A[2];
+	A[3]=1^A[3];
+end
+endmodule
 
-### PROGRAM 
-/*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: Thirulokeshh.S
+RegisterNumber: 212222050059
+~~~
+### RTL LOGIC UP COUNTER AND DOWN COUNTER:
+### For Upcounter:
+![WhatsApp Image 2023-05-29 at 09 31 52](https://github.com/shoaib3136/Exp-7-Synchornous-counters-/assets/117919362/5aeccff0-1ce5-4410-ae43-6ce37d9e25cf)
+
+### For Downcounter:
+![WhatsApp Image 2023-05-29 at 09 46 55](https://github.com/shoaib3136/Exp-7-Synchornous-counters-/assets/117919362/ab165f81-0fcb-4223-a1db-7abf765093e1)
+
+
+
+### TIMING DIGRAMS FOR COUNTER :
+### For Upcounter:
+![image](https://github.com/shoaib3136/Exp-7-Synchornous-counters-/assets/117919362/a6d09728-2548-4dfb-807e-228cd3add169)
+
+### For Downcounter:
+![image](https://github.com/shoaib3136/Exp-7-Synchornous-counters-/assets/117919362/b02dc6e9-93cc-4d7b-947b-61fafe739c1a)
+
+
+### TRUTH TABLE:
+### i.)Upcounter:
+
+![image](https://github.com/shoaib3136/Exp-7-Synchornous-counters-/assets/117919362/d402e02f-9271-4c02-9567-98da27b0c25e)
+
+### ii.)Downcounter:
+
+![image](https://github.com/shoaib3136/Exp-7-Synchornous-counters-/assets/117919362/eb81454c-2f0a-40f8-a3b6-48a25970318f)
 
 
 
 
 
 
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
 
 
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
-
-### RESULTS 
+### RESULTS:
+Thus,The 4-bit up and down counter is implemented successfully.
